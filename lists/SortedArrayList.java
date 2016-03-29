@@ -8,7 +8,7 @@ public class SortedArrayList extends ArrayList{
 	
 	private Comparator comp;
 	
-	public SortedArrayList(Comparator comp){
+	public SortedArrayList(Comparator<?> comp){
 		super();
 		this.comp = comp;
 	}
@@ -25,7 +25,7 @@ public class SortedArrayList extends ArrayList{
 		else
 		{
 		int i=0;
-		for(  ; i<size()-1 && comp.compare(value,super.get(i)) >= 0 ; i++){	
+		for(  ; i<=size()-1 && comp.compare(value,super.get(i)) >= 0 ; i++){	
 			
 		}
 		
@@ -37,7 +37,8 @@ public class SortedArrayList extends ArrayList{
 			int j;
 			
 			for(j = size(); j > i; j--){
-				super.set(j, super.get(j-1));
+				
+					super.set(j, super.get(j-1));
 				
 			}
 			super.set(j, value);

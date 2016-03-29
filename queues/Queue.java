@@ -2,7 +2,7 @@ package queues;
 
 public interface Queue {
 	
-	void enqueue(Object value);
+	void enqueue(Object value) throws FullQueueException;
 	
 	Object dequeue() throws EmptyQueueException;
 	
