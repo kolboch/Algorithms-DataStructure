@@ -1,4 +1,4 @@
-package SortAlgorithms;
+package sortAlgorithms;
 
 import lists.List;
 

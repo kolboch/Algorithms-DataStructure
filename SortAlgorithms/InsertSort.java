@@ -1,4 +1,4 @@
-package SortAlgorithms;
+package sortAlgorithms;
 
 import java.util.Comparator;
 import lists.ArrayList;
@@ -19,11 +19,12 @@ public class InsertSort implements ListSorter {
 		
 		for(int j = 1; j < array.size(); j++){
 			Object toInsert = array.get(j);
-			while( (j > 0) && comparator.compare(array.get(j-1), toInsert) > 0){
-				array.set(j, array.get(j-1));
-				j--;
+			int k = j;
+			while( (k > 0) && comparator.compare(array.get(k-1), toInsert) > 0){
+				array.set(k, array.get(k-1));
+				k--;
 			}
-			array.set(j, toInsert);
+			array.set(k, toInsert);
 		}
 		
 		return array;
