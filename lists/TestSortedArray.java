@@ -8,7 +8,7 @@ public class TestSortedArray {
 		Car d = new Car(1979,140,4);
 		Car e = new Car(1969,160,4);
 		
-		SortedArrayList sat = new SortedArrayList(new CarComparator());
+		SortedArrayList sat = new SortedArrayList(new CarComparatorYear());
 		
 		
 		sat.add(a);

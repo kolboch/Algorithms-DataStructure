@@ -11,9 +11,9 @@ public class CarFactory {
 	private int maxPower;
 	private int seets;
 	
-	public CarFactory(int maxYear, int minYear, int maxPower, int minPower, int seets, int quantity)throws Exception{
+	public CarFactory(int maxYear, int minYear, int maxPower, int minPower, int seets, int quantity)throws IllegalArgumentException{
 		if(maxYear < minYear || maxPower < minPower){
-			throw new Exception("Max can't be smaller than min value");
+			throw new IllegalArgumentException("Max can't be smaller than min value");
 		}
 		this.maxYear = maxYear;
 		this.minYear= minYear;

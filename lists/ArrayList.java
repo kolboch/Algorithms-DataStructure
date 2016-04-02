@@ -9,7 +9,13 @@ public class ArrayList implements List{
 		array = new Object[10];
 		this.size=0;
 	}
-	
+	public ArrayList(List list){
+		this();
+		ensureCapacity(list.size());
+		for(int i = 0; i < list.size(); i++){
+			add(list.get(i));
+		}
+	}
 	public ArrayList(Object[]array){
 		int a = array.length;
 		this.array = new Object[a + (int)(a*0.5)];
@@ -119,6 +125,17 @@ public class ArrayList implements List{
 	public void printAll(){
 		for(int i=0; i<size(); i++){
 			System.out.print(array[i].toString());
+		}
+	}
+	
+	public void swap(int index1, int index2) throws IndexOutOfBoundsException{
+		if(isIndexValid(index1) && isIndexValid(index2)){
+			Object tempValue = array[index1];
+			array[index1] = array[index2];
+			array[index2] = tempValue;
+		}
+		else{
+			throw new IndexOutOfBoundsException("Index out of bounds.");
 		}
 	}
 	

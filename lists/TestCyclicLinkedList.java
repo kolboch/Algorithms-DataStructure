@@ -4,7 +4,7 @@ public class TestCyclicLinkedList {
 	
 	public static void main(String[]args){
 		
-		CyclicLinkedList cyclic = new CyclicLinkedList(new CarComparator());
+		CyclicLinkedList cyclic = new CyclicLinkedList(new CarComparatorYear());
 		
 		Car a = new Car(1899,100,3); // problem!
 		Car b = new Car(2016,100,3);
