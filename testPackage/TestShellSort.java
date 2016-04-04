@@ -1,10 +1,13 @@
-package sortAlgorithms;
+package testPackage;
 
 import lists.*;
+import sortAlgorithms.ShellSort;
 
 public class TestShellSort {
 
 	public static void main(String[]args){
+	
+		long timeStart = System.currentTimeMillis();
 		
 		try{
 			 ShellSort testInsert = new ShellSort(new CarComparatorYear());
@@ -21,6 +24,7 @@ public class TestShellSort {
 			  	e.printStackTrace();
 		}
 		
+		System.out.println("TimeElapsed: " +  (System.currentTimeMillis() - timeStart));
 		
 	}
 }

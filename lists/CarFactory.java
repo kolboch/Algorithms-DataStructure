@@ -63,7 +63,9 @@ public class CarFactory implements Generator, SortDefinedGenerator{
 	
 	@Override
 	public Object[] generate(SortExtent extent) {
-		
+		if(extent.getSortPercentage() == 0){
+			return generate();
+		}
 		int sortedIndexSpace = 100 / extent.getSortPercentage();
 		
 		array[0] = randomCar();

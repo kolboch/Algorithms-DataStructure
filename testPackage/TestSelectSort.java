@@ -1,9 +1,13 @@
-package sortAlgorithms;
+package testPackage;
 
 import lists.*;
+import sortAlgorithms.SelectSort;
 
 public class TestSelectSort{
 	public static void main(String[]args){
+		
+		long timeStart = System.currentTimeMillis();
+		
 		try{
 			 SelectSort testInsert = new SelectSort(new CarComparatorYear());
 			 CarFactory cf = new CarFactory(2016, 1900, 400, 100, 4, 7);
@@ -17,6 +21,9 @@ public class TestSelectSort{
 			 }catch(IllegalArgumentException e){
 			  	e.printStackTrace();
 			 }
-		  }
+		
+			System.out.println("TimeElapsed: " +  (System.currentTimeMillis() - timeStart));
+		
+		 }
 	
 }
