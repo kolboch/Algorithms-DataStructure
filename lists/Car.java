@@ -28,6 +28,10 @@ public class Car implements Comparable<Car>{
 		return powerKM;
 	}
 	
+	protected void setProductionYear(int newProductionYear){
+		this.productionYear = newProductionYear;
+	}
+	
 	public boolean equals(Car other){
 		if(other == this)
 			return true;
