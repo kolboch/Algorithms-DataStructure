@@ -17,10 +17,6 @@ public class ArrayIterator implements Iterable {
 		
 	}
 	
-	
-	
-	
-	
 	@Override
 	public void first() {
 		_current = _first;
@@ -56,32 +52,18 @@ public class ArrayIterator implements Iterable {
 		return _current > _last || _current < _first;
 	}
 
-
-
-
-
 	@Override
 	public int getCurrent() {
 		return _current;
 	}
 
-
-
-
-
 	@Override
 	public int getFirst() {
 		return _first;
 	}
-
-
-
-
-
 	@Override
 	public int getLast() {
 		return _last;
 	}
-	
 	
 }

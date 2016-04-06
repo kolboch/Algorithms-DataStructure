@@ -1,5 +1,7 @@
 package lists;
 
+import iterators.Iterator;
+
 public interface List {
 	
 	void add(Object value);
@@ -19,6 +21,8 @@ public interface List {
 	boolean contains(Object value);
 	
 	int getIndexOf(Object value);
+
+	Iterator iterator();
 	
 	
 }

@@ -1,8 +1,10 @@
 package testPackage;
 
 import lists.ArrayList;
+import lists.Car;
 import lists.CarComparatorYear;
 import lists.CarFactory;
+import lists.List;
 import sortAlgorithms.BubbleSort;
 import sortAlgorithms.InsertSort;
 import sortAlgorithms.SelectSort;
@@ -11,32 +13,55 @@ import sortedCases.SortExtent;
 
 public class AlgorithmsTest {
 	
-	private CarFactory cf = new CarFactory(2016, 1900, 400, 100, 4, 100);
-	private ArrayList array = new ArrayList(cf.generate(SortExtent.RANDOM));
-	private long timeStart;
+	private static final CarFactory cf = new CarFactory(2016, 1900, 400, 100, 4, 100);
+	private static final ArrayList array = new ArrayList(cf.generate(SortExtent.RANDOM));
+	
 	
 	public static void main(String[]args){
 		
 		AlgorithmsTest at = new AlgorithmsTest();
 		
-		at.testBubbleSort();
+		at.testBubbleSort(at.copyOfArray(array));
 		
-		at.testInsertSort();
+		at.testInsertSort(at.copyOfArray(array));
 		
-		at.testSelectSort();
+		at.testShellSort(array);
 		
-		at.testShellSort();	
+		at.testSelectSort(array);
+	}
+	/*
+	private ArrayList copyTest(ArrayList array){
+		ArrayList copy = new ArrayList();
+		
+		for(int i = 0; i < array.size() ; i++){
+			copy.add(array.get(i));
+		}
+		
+		return copy;
+	}
+	*/
+	private ArrayList copyOfArray(ArrayList array){
+		
+		Object[]copyArray = new Object[array.size()];
+		for(int i = 0; i < copyArray.length; i++){
+			copyArray[i] = new Car((Car)array.get(i));
+		}
+		ArrayList copy = new ArrayList(copyArray);
+		return copy;
 	}
 	
-	private void testBubbleSort(){
-		timeStart = System.currentTimeMillis();
+	private void testBubbleSort(ArrayList inArray){
+		
+		long timeStart = System.currentTimeMillis();
 		try{
 		
 		printHeader("BubbleSort");
-			
+		
+		ArrayList arrayCopy = copyOfArray(inArray); //test
+		
 		BubbleSort testBubble = new BubbleSort(new CarComparatorYear());
 		
-		ArrayList arrayBubble = new ArrayList(testBubble.sort(array));
+		ArrayList arrayBubble = new ArrayList(testBubble.sort(arrayCopy)); //test of copyTest
 		
 		// arrayBubble.printAll();
 		
@@ -53,18 +78,24 @@ public class AlgorithmsTest {
 		System.out.println("For "+ nameAlgorithm +" TimeElapsed: " +  (System.currentTimeMillis() - startTime));
 	}
 	
-	private void testInsertSort(){
-		timeStart = System.currentTimeMillis();
+	private void testInsertSort(ArrayList inArray){
+		
+		long timeStart = System.currentTimeMillis();
 		
 		try{
 		 
 		printHeader("InsertSort");
-		 
+		
 		 InsertSort testInsert = new InsertSort(new CarComparatorYear());
-		 ArrayList arrayInsert = new ArrayList(testInsert.sort(array));
+		 ArrayList copy = copyOfArray(inArray);
+		 
+		ArrayList insertArray = new ArrayList(testInsert.sort(copy));
 		
-		 // arrayInsert.printAll();
+		 
 		
+		// insertArray.printAll();
+		
+		 
 		
 		 }catch(IllegalArgumentException e){
 		  	e.printStackTrace();
@@ -74,15 +105,15 @@ public class AlgorithmsTest {
 		System.out.println();
 	}
 	
-	private void testSelectSort(){
-		timeStart = System.currentTimeMillis();
+	private void testSelectSort(ArrayList array){
+		long timeStart = System.currentTimeMillis();
 		
 		try{
 		 
 		printHeader("SelectSort");
-		 
+		 ArrayList copyArray = copyOfArray(array);
 		 SelectSort testSelect = new SelectSort(new CarComparatorYear());
-		 ArrayList arraySelect = new ArrayList(testSelect.sort(array));
+		 ArrayList arraySelect = new ArrayList(testSelect.sort(copyArray));
 		
 		 // arrayInsert.printAll();
 		
@@ -95,15 +126,15 @@ public class AlgorithmsTest {
 		System.out.println();
 	}
 	
-	private void testShellSort(){
-		timeStart = System.currentTimeMillis();
+	private void testShellSort(ArrayList array){
+		long timeStart = System.currentTimeMillis();
 		try{
 		
 		printHeader("ShellSort");
 			
 		ShellSort testShell = new ShellSort(new CarComparatorYear());
-		
-		ArrayList arrayShell = new ArrayList(testShell.sort(array));
+		ArrayList copyArray = copyOfArray(array);
+		ArrayList arrayShell = new ArrayList(testShell.sort(copyArray));
 		
 		// arrayBubble.printAll();
 		

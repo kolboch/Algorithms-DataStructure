@@ -6,6 +6,11 @@ public class Car implements Comparable<Car>{
 	private final int seets;
 	private int powerKM;
 	
+	public Car(Car c){
+		this.productionYear = c.getProductionYear();
+		this.seets = c.getSeetsNumber();
+		this.powerKM = c.getPowerKM();
+	}
 	
 	public Car(int productionYear, int powerKM, int seets){
 		this.productionYear = productionYear;

@@ -1,13 +1,18 @@
 package lists;
 
+import iterators.ArrayIterator;
+import iterators.Iterator;
+
 public class ArrayList implements List{
 	
 	private Object[]array;
 	private int size;
+	private int currentIndex;
 	
 	public ArrayList(){
 		array = new Object[10];
 		this.size=0;
+		currentIndex = 0;
 	}
 	public ArrayList(List list){
 		this();
@@ -23,6 +28,7 @@ public class ArrayList implements List{
 			this.array[i] = array[i];
 		}
 		size = array.length;
+		this.currentIndex = 0;
 	}
 	
 	public int getCapacity(){
@@ -58,14 +64,17 @@ public class ArrayList implements List{
 		size++;
 	}
 	private boolean isIndexValid(int index) throws IndexOutOfBoundsException{
-		if(index < 0 || index > size() )
+		if(index < 0 || index > size()-1)
 				throw new IndexOutOfBoundsException("Index out of border");
 		else 
 			return true;
 	}
 	@Override
 	public void delete(int index) {
-		if(isIndexValid(index)){
+		if(index == size() - 1){
+			size--;
+		}
+		else if(isIndexValid(index)){
 			for(int i = index ; i < size() ; i++) // test it 
 				array[i] = array[i+1];
 			
@@ -137,6 +146,10 @@ public class ArrayList implements List{
 		else{
 			throw new IndexOutOfBoundsException("Index out of bounds.");
 		}
+	}
+	@Override
+	public Iterator iterator() {
+		return new Iterator(array, size);
 	}
 	
 }
