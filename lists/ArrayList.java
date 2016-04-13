@@ -1,6 +1,5 @@
 package lists;
 
-import iterators.ArrayIterator;
 import iterators.Iterator;
 
 public class ArrayList implements List{
@@ -10,7 +9,7 @@ public class ArrayList implements List{
 	private int currentIndex;
 	
 	public ArrayList(){
-		array = new Object[10];
+		array = new Object[16];
 		this.size=0;
 		currentIndex = 0;
 	}
@@ -64,7 +63,7 @@ public class ArrayList implements List{
 		size++;
 	}
 	private boolean isIndexValid(int index) throws IndexOutOfBoundsException{
-		if(index < 0 || index > size()-1)
+		if(index < 0 || index > size())
 				throw new IndexOutOfBoundsException("Index out of border");
 		else 
 			return true;
@@ -102,7 +101,7 @@ public class ArrayList implements List{
 	}
 	@Override
 	public boolean isEmpty() {
-		return size() > 0;
+		return !(size() > 0);
 	}
 	@Override
 	public int size() {
@@ -111,7 +110,7 @@ public class ArrayList implements List{
 	@Override
 	public void clear() {
 		size = 0;
-		array = new Object[10];
+		array = new Object[16];
 	}
 	@Override
 	public boolean contains(Object value) {
@@ -150,6 +149,10 @@ public class ArrayList implements List{
 	@Override
 	public Iterator iterator() {
 		return new Iterator(array, size);
+	}
+	
+	public Object[] getSourceArray(){
+		return array;
 	}
 	
 }

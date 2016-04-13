@@ -7,7 +7,6 @@ public class ArrayIterator implements Iterable {
 	private int _current;
 	private Object[] _array;
 	
-	
 	public ArrayIterator(Object[]_array, int start , int length){
 		
 		this._array = _array;

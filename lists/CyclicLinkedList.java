@@ -2,6 +2,9 @@ package lists;
 
 import java.util.Comparator;
 
+import iterators.Iterator;
+import iterators.LinkedListIterator;
+
 public class CyclicLinkedList implements List {
 	
 	private Comparator comp;
@@ -143,6 +146,11 @@ public class CyclicLinkedList implements List {
 		System.out.print(current.getValue().toString());
 		}
 			
+	}
+
+	@Override
+	public Iterator iterator() {
+		return new LinkedListIterator(null); // don;t use needs fixing
 	}
 	
 

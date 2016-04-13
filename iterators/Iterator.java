@@ -23,7 +23,6 @@ public class Iterator implements Iterable{
 		this.current =0;
 	}
 	
-	
 	@Override
 	public void first() {
 		this.current = 0;
@@ -38,15 +37,20 @@ public class Iterator implements Iterable{
 
 	@Override
 	public void next() throws IndexOutOfBoundsException{
-		current++;
+		if(hasNext()){
+			current++;
+		}
+		else{
+			throw new IndexOutOfBoundsException("Index out of border.");
+		}
 	}
 
 	@Override
 	public void previous() throws IndexOutOfBoundsException{
-		if(current-1 > 0 )
+		if(hasPrevious())
 			current--;
 		else
-			throw new IndexOutOfBoundsException("Index spoza zakresu.");
+			throw new IndexOutOfBoundsException("Index out of border.");
 		
 	}
 
@@ -56,10 +60,26 @@ public class Iterator implements Iterable{
 			throw new IndexOutOfBoundsException("Index out of bounds");
 		else
 			return array[current];
-		
-			
 	}
-
+	
+	public boolean hasNext(){
+		if(current + 1 > array.length){
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+	
+	public boolean hasPrevious(){
+		if(current - 1 > 0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
 	@Override
 	public boolean isDone() {
 		
@@ -86,6 +106,10 @@ public class Iterator implements Iterable{
 	
 	public void iterator(){
 		current = 0;
+	}
+	
+	protected Object[] iteratingArray(){ 
+		return array;
 	}
 	
 	

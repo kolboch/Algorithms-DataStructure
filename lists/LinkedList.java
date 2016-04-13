@@ -1,5 +1,8 @@
 package lists;
 
+import iterators.Iterator;
+import iterators.LinkedListIterator;
+
 public class LinkedList implements List {
 	
 	private int size;
@@ -154,6 +157,11 @@ public class LinkedList implements List {
 			}
 			System.out.print(getCurrent().toString());
 		}
+	}
+
+	@Override
+	public Iterator iterator() {
+		return new LinkedListIterator(null); // don't use need fixing
 	}
 	
 	
