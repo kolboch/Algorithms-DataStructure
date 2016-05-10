@@ -18,7 +18,8 @@ public class Car implements Comparable<Car>{
 		this.seets = seets;
 	}
 	public String toString(){
-		return String.format("year:%6d power:%6d seets:%2d%n", productionYear, powerKM, seets);
+		return String.format("%4d", productionYear);
+		// return String.format("year:%6d power:%6d seets:%2d%n", productionYear, powerKM, seets);
 	}
 	
 	public int getProductionYear(){

@@ -47,6 +47,7 @@ public class TreeTest {
 		
 		System.out.println("Levelorder: ");
 		tree.levelOrderPrint();
+		
 		System.out.println("Preorder: ");
 		tree.preOrder();
 		

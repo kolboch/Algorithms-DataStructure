@@ -18,7 +18,7 @@ public class BinarySearchTree {
 	  
   }
   
-  public int contains(Object x){ // changed boolean to int 
+  public int contains(Object x){ // changed boolean to int to test number of comparisions
 	  
 	 // Node t = search(x);
 	  return search(x);
